@@ -1,0 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.5/containers/typescript-node
+{
+    "name": "Chatbot-ui - Dev Container",
+    // "runArgs": ["--init"],
+    "runArgs": ["--env-file",".devcontainer/.env"],
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "jest.autoRun": { "watch": false, "onSave": "test-file", "onStartup": ["all-tests"] },
+        "jest.debugCodeLens.showWhenTestStateIn": ["fail", "unknown", "pass"]
+    },
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "rangav.vscode-thunder-client",
+        "ms-azuretools.vscode-docker",
+        "orta.vscode-jest",
+        "redhat.vscode-yaml",
+        "shd101wyy.markdown-preview-enhanced",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
+    ],
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "pnpm install --unsafe-perm"
+}
